@@ -30,7 +30,7 @@
     name: "{{ item }}"
     state: present
   with_items:
-    - virtualbox-5.2
+    - virtualbox
     - tree
 
 - name: Install vagrant
