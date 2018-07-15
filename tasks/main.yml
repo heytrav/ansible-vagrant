@@ -35,4 +35,5 @@
 
 - name: Install vagrant
   apt:
-    deb: https://releases.hashicorp.com/vagrant/2.0.2/vagrant_2.0.2_x86_64.deb
+    name: vagrant
+    state: latest
