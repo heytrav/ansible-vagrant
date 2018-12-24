@@ -41,5 +41,7 @@
 
 - name: Add vagrant boxes
   shell: vagrant box add {{ item }} --provider virtualbox
+  async: 3600
+  poll: 60
   with_items: "{{ vagrant_images }}"
 
