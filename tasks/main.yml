@@ -39,9 +39,16 @@
         state: latest
   become: true
 
+- name: Get list of vagrant boxes on machine
+  shell: vagrant box list
+  register: vagrant_boxes
+
+- name: Output list of vagrant boxes
+  debug:
+    var: vagrant_boxes
+
 - name: Add vagrant boxes
   shell: vagrant box add {{ item }} --provider virtualbox
-  async: 3600
-  poll: 60
   with_items: "{{ vagrant_images }}"
+  when: vagrant_boxes.stdout is not search(item)
 
