@@ -13,7 +13,7 @@
       apt_key:
         data: "{{ lookup('file', item) }}"
         state: present
-      with_items: 
+      with_items:
         - oracle_vbox_2016.asc
         - oracle_vbox.asc
 
@@ -29,7 +29,7 @@
     - name: Install a few packages that we need for the course
       apt:
         name:
-          - virtualbox
+          - virtualbox-5.2
           - tree
         state: present
 
@@ -51,4 +51,3 @@
   shell: vagrant box add {{ item }} --provider virtualbox
   with_items: "{{ vagrant_images }}"
   when: vagrant_boxes.stdout is not search(item)
-
